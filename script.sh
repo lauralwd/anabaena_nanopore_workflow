@@ -204,9 +204,9 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       fi
 done
 # now combine all sniffles calls in one vcf
-#if   [ ! -f "$wd"/multi-sample.vcf ]
-#then sniffles --input "$wd/*.snf" --vcf "$wd"/multi-sample.vcf
-#fi
+if   [ ! -f "$wd"/multi-sample.vcf ]
+then sniffles --input "$wd/*.snf" --vcf "$wd"/multi-sample.vcf
+fi
 conda deactivate
 
 # call variants with medaka on the ncbi reference
@@ -281,8 +281,8 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       fi
 done
 # now combine all sniffles calls in one vcf
-#if   [ ! -f "$wd"/multi-sample.vcf ]
-#then sniffles --input "$wd/*.snf" --vcf "$wd"/multi-sample.vcf
-#fi
+if   [ ! -f "$wd"/multi-sample.vcf ]
+then sniffles --input "$wd/*.snf" --vcf "$wd"/multi-sample.vcf
+fi
 conda deactivate
 echo 'Script finished'
