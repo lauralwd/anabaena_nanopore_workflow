@@ -218,7 +218,7 @@ then   mkdir -p "$wd"
 fi
 
 for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastqcc\.gz//g' )
+do    name=$(echo "$s" | sed 's/\.fastq.gz//g' )
       if     [ ! -d "$wd/$name" ]
       then   if   [ ! $(command -v medaka_haploid_variant) ]
              then echo 'cant find medaka'
