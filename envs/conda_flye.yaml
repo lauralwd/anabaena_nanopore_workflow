@@ -6,18 +6,34 @@ channels:
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=1_gnu
-  - ca-certificates=2021.5.30=ha878542_0
+  - bandage=0.8.1=hb59a952_0
+  - ca-certificates=2022.2.1=h06a4308_0
+  - dbus=1.13.18=hb2f20db_0
+  - expat=2.4.4=h295c915_0
   - flye=2.9=py39h39abbe0_0
+  - fontconfig=2.13.1=h6c09931_0
+  - freetype=2.11.0=h70c0345_0
+  - glib=2.69.1=h4ff587b_1
+  - gst-plugins-base=1.14.0=h8213a91_2
+  - gstreamer=1.14.0=h28cd5cc_2
+  - icu=58.2=he6710b0_3
+  - jpeg=9d=h7f8727e_0
   - ld_impl_linux-64=2.36.1=hea4e1c9_2
   - libffi=3.3=h58526e2_2
   - libgcc-ng=11.1.0=hc902ee8_8
   - libgomp=11.1.0=hc902ee8_8
+  - libpng=1.6.37=hbc83047_0
   - libstdcxx-ng=11.1.0=h56837e0_8
+  - libuuid=1.0.3=h7f8727e_2
+  - libxcb=1.14=h7b6447c_0
+  - libxml2=2.9.12=h03d6c58_0
   - ncurses=6.2=h58526e2_4
-  - openssl=1.1.1k=h7f98852_1
+  - openssl=1.1.1m=h7f8727e_0
+  - pcre=8.45=h295c915_0
   - pip=21.2.4=pyhd8ed1ab_0
   - python=3.9.7=h49503c6_0_cpython
   - python_abi=3.9=2_cp39
+  - qt=5.9.7=h5867ecd_1
   - readline=8.1=h46c0cb4_0
   - setuptools=57.4.0=py39hf3d152e_0
   - sqlite=3.36.0=h9cd32fc_0
