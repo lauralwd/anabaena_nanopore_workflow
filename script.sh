@@ -106,6 +106,11 @@ done
 conda deactivate
 
 # Annotate all assembled and polished genomes with bakta
+if   [ ! -d "$baktaDB"/amrfinderplus-db ]
+then echo 'amrfinderplus-db is not setup correctly, doing that now'
+     amrdinamrfinder_update --database "$baktaDB"/amrfinderplus-db
+fi
+
 echo 'Checking if all polished assemblies are annotated with bakta'
 conda activate bakta
 for   s in "${samples[@]}"
