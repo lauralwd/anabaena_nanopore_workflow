@@ -59,6 +59,7 @@ dependencies:
   - python=3.7.11=h12debd9_0
   - qt=5.9.7=h5867ecd_1
   - readline=8.1.2=h7f8727e_1
+  - samtools=1.7=1
   - setuptools=58.0.4=py37h06a4308_0
   - sniffles=2.0.3=pyhdfd78af_0
   - sqlite=3.37.2=hc218d9a_0
