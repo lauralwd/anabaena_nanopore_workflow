@@ -241,7 +241,7 @@ fi
 
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -f "$wd/$name".bam ]
+      if     [ ! -f "$wd/$name".sorted.bam ]
       then   if   [ ! $(command -v ngmlr) ]
              then echo 'cant find ngmlr'
              fi
