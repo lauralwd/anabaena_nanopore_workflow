@@ -28,18 +28,17 @@ baktaDB=/stor/scripts/baktaDB                                      # bakta db fo
 WT_name=WT                                                         # the name of your wild type sample to use as a reference for variant calling
 WT="$basedir"/denovo/"$WT_name"/polished-medaka/consensus.fasta    # auto genenerated based on the line above
 
-# A trick to swtich conda environments while using this script
+# A trick to swtich conda environments while using this script, adapt to your particular conda installation.
 source /home/laura/miniconda3/etc/profile.d/conda.sh
 
-# get an array of our samples directly from the available sequencing files
-#samples=( $(find "$fqdir" -maxdepth 1 -name '*.fastq.gz' -printf '%P\n') )
-samples=( $(find "$fqdir" -maxdepth 1 -name 'UU2-3.fastq.gz' -printf '%P\n') )
+# get an array of our samples directly from the available sequencing files and check if any samples are found
+samples=( $(find "$fqdir" -maxdepth 1 -name '*.fastq.gz' -printf '%P\n') )
 if   [ "${#samples[@]}" -lt 1 ]
 then echo no samples found
      exit
 fi
 
-# for each sample, check if it is assembled already. If not, then assemble with flye
+# for each sample, make a de novo assembly with flye
 echo 'Checking if all denovo assemblies are present'
 conda activate flye
 if     [ ! -d "$basedir"/denovo ]
@@ -52,7 +51,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              then echo 'flye is not found'
                   exit
              fi
-             # assemble with flye with a max assembly coverage of 40, see flye manual for details
+             # assemble with flye expecting a genome of 6.4Mb
              flye --nano-hq "$fqdir/$s"    \
                   --genome-size 6.4M       \
                   --threads $(nproc)       \
@@ -74,7 +73,6 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              then echo 'medaka is not found'
                   exit
              fi
-             # assemble with flye with a max assembly coverage of 40, see flye manual for details
              medaka_consensus -i "$fqdir/$s"    \
                               -d "$basedir"/denovo/"$name"/assembly.fasta  \
                               -o "$basedir"/denovo/"$name/polished-medaka" \
@@ -129,7 +127,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
 done
 conda deactivate
 
-# call variants with medaka on the wild type
+# call variants with medaka on the wild type de novo assembly
 echo 'Checking if all samples are used for variant calling on the denovo assembled WT'
 conda activate medaka
 wd="$basedir"/haplotypes_WT/medaka
@@ -172,6 +170,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                    -t $(nproc)        \
                    -x ont             \
                    -o "$wd/$name".sam
+             # now process the bam file with samtools for later use and visualisation
              samtools sort -@ 6 -m 9G "$wd/$name".sam \
              | samtools view -b -@ 6 -h               \
              > "$wd/$name".sorted.bam
