@@ -25,11 +25,16 @@ basedir=/stor/anabaena                                             # this is whe
 fqdir=/stor/azolla_sequencing/nanopore/anabaena                    # a dir with nanopore .fastq.gz files to process
 ncbi="$basedir"/reference/GCF_000009705.1_ASM970v1_genomic.fna     # a reference genome to call variants on
 baktaDB=/stor/scripts/baktaDB                                      # bakta db for annotation
+condadir=/home/laura/miniconda3                                    # (mini)conda(3) directory 
 WT_name=WT                                                         # the name of your wild type sample to use as a reference for variant calling
 WT="$basedir"/denovo/"$WT_name"/polished-medaka/consensus.fasta    # auto genenerated based on the line above
 
 # A trick to swtich conda environments while using this script, adapt to your particular conda installation.
-source /home/laura/miniconda3/etc/profile.d/conda.sh
+if   [ ! -f "$condadir"/etc/profile.d/conda.sh ]
+then echo 'quiting for we need the conda environments in the `envs` directory to proceed'
+     exit
+else source "$condadir"/etc/profile.d/conda.sh
+fi
 
 # get an array of our samples directly from the available sequencing files and check if any samples are found
 samples=( $(find "$fqdir" -maxdepth 1 -name '*.fastq.gz' -printf '%P\n') )
