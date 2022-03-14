@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:0-477936" version="8">
+    <Resources>
+        <Resource path="../denovo/WT/polished-medaka_prokka-annotation/WT.gff" type="gff"/>
+        <Resource path="../haplotypes_WT/medaka/WT/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU2-3/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU1-1/medaka.vcf" type="vcf"/>
+        <Resource path="../denovo/WT/polished-medaka_bakta-annotation/WT.gff3" type="gff3"/>
+        <Resource path="../haplotypes_WT/medaka/CSV15/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/sniffles/multi-sample.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU2-8/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU1-8/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU1-4/medaka.vcf" type="vcf"/>
+    </Resources>
+    <Panel height="498" name="DataPanel" width="1829">
+        <Track attributeKey="multi-sample.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;3.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/sniffles/multi-sample.vcf" name="multi-sample.vcf" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/WT/medaka.vcf" name="WT" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-3/medaka.vcf" name="UU2-3" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-8/medaka.vcf" name="UU2-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-8/medaka.vcf" name="UU1-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-4/medaka.vcf" name="UU1-4" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-1/medaka.vcf" name="UU1-1" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/CSV15/medaka.vcf" name="CSV15" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+    </Panel>
+    <Panel height="420" name="FeaturePanel" width="1829">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="POSITIVE" shouldShowTranslation="false" visible="true"/>
+        <Track attributeKey="WT.gff" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;44.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/WT/polished-medaka_prokka-annotation/WT.gff" name="prokka annotation" visible="true"/>
+        <Track attributeKey="WT.gff3" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;24.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/WT/polished-medaka_bakta-annotation/WT.gff3" name="bakta annotation" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.5405405405405406"/>
+    <HiddenAttributes>
+        <Attribute name="DATA FILE"/>
+        <Attribute name="DATA TYPE"/>
+        <Attribute name="NAME"/>
+    </HiddenAttributes>
+</Session>
