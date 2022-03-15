@@ -269,7 +269,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
 done
 
 #call variants with sniffles on the reference of of choice
-conda acticate sniffles
 for  r in $(seq 1 1 "${#refs[@]}" )
 do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      refname="${ref_names[$count]}"  # define refname
