@@ -113,6 +113,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
             | samtools sort -@ 6 -l 9 -m 9G \
             | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
+            samtools index "$basedir"/denovo/"$name/polished-medaka/$name.bam"
       fi
 done
 conda deactivate
@@ -142,6 +143,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
             | samtools sort -@ 6 -l 9 -m 9G \
             | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
+            samtools index "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
       fi
 done
 conda deactivate
