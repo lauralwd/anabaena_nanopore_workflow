@@ -115,7 +115,6 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                       -Y                    \
                       -a                    \
             | samtools sort -@ 6 -l 9 -m 9G \
-            | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
             # index the bamfile for igv
             samtools index "$basedir"/denovo/"$name/polished-medaka/$name.bam"
@@ -147,7 +146,6 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                       -Y                    \
                       -a                    \
             | samtools sort -@ 6 -l 9 -m 9G \
-            | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
             # index the bamfile for igv
             samtools index "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
@@ -235,7 +233,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      done
 done
 conda deactivate
-exit
 
 # map reads with ngmlr for variant calling with sniffles
 conda activate nanopore
