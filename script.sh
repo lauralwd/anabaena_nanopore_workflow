@@ -93,7 +93,7 @@ done
 conda deactivate
 
 # for each sample, map the sample reads to the polished assembly
-echo 'Checking if all denovo assemblies have reads mapped back'
+echo 'Checking if all denovo assemblies have sample reads mapped back'
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -119,10 +119,9 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       fi
 done
 conda deactivate
-exit
 
 # for each sample, map the WT reads to the polished assembly
-echo 'Checking if all denovo assemblies have reads mapped back'
+echo 'Checking if all denovo assemblies have WT reads mapped back'
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
