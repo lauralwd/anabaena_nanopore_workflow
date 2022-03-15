@@ -316,7 +316,7 @@ do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
            blat  "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
                  queries.fasta                                             \
                  -t=DNA -q=DNA                                             \
-                 "$wd"/"$refname"_blathits.psl
+                 "$wd"/"$name"_blathits.psl
      fi
 done
 conda deactivate
