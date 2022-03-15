@@ -61,24 +61,25 @@ fi
 # for each sample, make a de novo assembly with flye
 echo 'Checking if all denovo assemblies are present'
 conda activate flye
-if     [ ! -d "$basedir"/denovo ]
-then   mkdir "$basedir"/denovo
+wd="$basedir"/denovo
+if     [ ! -d "$wd" ]
+then   mkdir  "$wd"
 fi
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -d "$basedir"/denovo/"$name" ]
       then   if   [ ! $(command -v flye) ]
              then echo 'flye is not found'
                   exit
              fi
+      if     [ ! -d "$wd/$name" ]
              # assemble with flye expecting a genome of 6.4Mb
              flye --nano-hq "$fqdir/$s"    \
                   --genome-size 6.4M       \
                   --threads $(nproc)       \
                   --scaffold               \
-                  --out-dir "$basedir"/denovo/"$name"
-             Bandage image "$basedir"/denovo/"$name"/assembly_graph.gfa \
-                           "$basedir"/denovo/"$name".png
+                  --out-dir "$wd/$name"
+             Bandage image "$wd/$name"/assembly_graph.gfa \
+                           "$wd/$name".png
       fi
 done
 conda deactivate
