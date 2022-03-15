@@ -102,10 +102,12 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              then echo 'minimap2 is not found'
                   exit
              fi
+             # check if a minimap2 index is already present:
              if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
              then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
                            -d "$basedir"/denovo/"$name"/assembly.fasta.mmi
              fi
+             # run minimap2, then sort the samfile and convert to bam
              minimap2 -d "$basedir"/denovo/"$name"/assembly.fasta \
                       "$fqdir/$s"           \
                       -x map-ont            \
@@ -115,6 +117,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
             | samtools sort -@ 6 -l 9 -m 9G \
             | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
+            # index the bamfile for igv
             samtools index "$basedir"/denovo/"$name/polished-medaka/$name.bam"
       fi
 done
@@ -131,10 +134,12 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              then echo 'minimap2 is not found'
                   exit
              fi
+             # check if a minimap2 index is already present:
              if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
              then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
                            -d "$basedir"/denovo/"$name"/assembly.fasta.mmi
              fi
+             # run minimap2, then sort the samfile and convert to bam
              minimap2 -d "$basedir"/denovo/"$name"/assembly.fasta \
                       "$fqdir/$refname".fastq.gz  \
                       -x map-ont            \
@@ -144,6 +149,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
             | samtools sort -@ 6 -l 9 -m 9G \
             | samtools view -b              \
             > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
+            # index the bamfile for igv
             samtools index "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
       fi
 done
