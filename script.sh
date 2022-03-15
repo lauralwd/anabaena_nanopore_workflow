@@ -88,10 +88,7 @@ conda activate medaka
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       if     [ ! -d "$basedir"/denovo/"$name/polished-medaka" ]
-      then   if   [ ! $(command -v medaka_consensus) ]
-             then echo 'medaka is not found'
-                  exit
-             fi
+      then   checkprog medaka_consensus
              medaka_consensus -i "$fqdir/$s"    \
                               -d "$basedir"/denovo/"$name"/assembly.fasta  \
                               -o "$basedir"/denovo/"$name/polished-medaka" \
@@ -107,10 +104,8 @@ conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       if     [ ! -f "$basedir"/denovo/"$name/polished-medaka/$name.bam" ]
-      then   if   [ ! $(command -v minimap2) ]
-             then echo 'minimap2 is not found'
-                  exit
-             fi
+      then   checkprog minimap2
+             checkprog samtools
              # check if a minimap2 index is already present:
              if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
              then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
@@ -138,10 +133,8 @@ for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       refname=$(grep "$name" "$maptab" | grep -v ncbi | cut -f 1 )
       if     [ ! -f "$basedir"/denovo/"$name/polished-medaka/$refname.bam" ]
-      then   if   [ ! $(command -v minimap2) ]
-             then echo 'minimap2 is not found'
-                  exit
-             fi
+      then   checkprog minimap2
+             checkprog samtools
              # check if a minimap2 index is already present:
              if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
              then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
@@ -169,10 +162,7 @@ for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       wd="$basedir"/denovo/"$name"/polished-medaka_prokka-annotation
       if     [ ! -d "$wd" ]
-      then   if   [ ! $(command -v prokka) ]
-             then echo 'prokka is not found'
-                  exit
-             fi
+      then   checkprog prokka
              prokka --outdir "$wd"    \
                     --addgenes        \
                     --genus 'nostoc'  \
@@ -188,6 +178,7 @@ conda deactivate
 # Annotate all assembled and polished genomes with bakta
 if   [ ! -d "$baktaDB"/amrfinderplus-db ]
 then echo 'amrfinderplus-db is not setup correctly, doing that now'
+     checkprog amrdinamrfinder_update
      amrdinamrfinder_update --database "$baktaDB"/amrfinderplus-db
 fi
 
@@ -197,10 +188,7 @@ for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       wd="$basedir"/denovo/"$name"/polished-medaka_bakta-annotation
       if     [ ! -d "$wd" ]
-      then   if   [ ! $(command -v bakta) ]
-             then echo 'prokka is not found'
-                  exit
-             fi
+      then   checkprog bakta
              bakta --output "$wd"    \
                    --db "$baktaDB"   \
                    --genus 'nostoc'  \
@@ -229,9 +217,10 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
            if     [ ! -d "$wd/$name" ]
-           then   if   [ ! $(command -v medaka_haploid_variant) ]
-                  then echo 'cant find medaka'
-                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+           then   checkprog medaka_haploid_variant
+                  # check if this reference-sample combo should be ran,
+                  # otherwise continue to the next combo
+                  if [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
                   then medaka_haploid_variant -i "$fqdir/$s"    \
                                               -r "${refs[$count]}"    \
                                               -o "$wd/$name"    \
@@ -258,9 +247,11 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
            if     [ ! -f "$wd/$name".sorted.bam ]
-           then   if   [ ! $(command -v ngmlr) ]
-                  then echo 'cant find ngmlr'
-                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+           then   checkprog ngmlr
+                  checkprog samtools
+                  # check if this reference-sample combo should be ran,
+                  # otherwise continue to the next combo
+                  if [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
                   then ngmlr -q "$fqdir/$s"     \
                              -r "${refs[$count]}" \
                              --rg-sm "$name"    \
@@ -292,9 +283,10 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
            if     [ ! -f "$wd/$name".vcf ]
-           then   if   [ ! $(command -v sniffles) ]
-                  then echo 'cant find sniffles'
-                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+           then   checkprog sniffles
+                  # check if this reference-sample combo should be ran,
+                  # otherwise continue to the next combo
+                  if [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
                   then sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
                                 --reference "${refs[$count]}"                     \
                                 --snf "$wd/$name".snf                             \
@@ -320,7 +312,8 @@ fi
 for  s in "${samples[@]}"
 do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
      if    [ ! -f "$wd"/"$name"_blathits.psl
-     then  blat  "$basedir"/denovo/"$name"/medaka-polished/consensus.fasta \
+     then  checkprog blat
+           blat  "$basedir"/denovo/"$name"/medaka-polished/consensus.fasta \
                  queries.fasta                                             \
                  -t=DNA -q=DNA                                             \
                  "$wd"/"$refname"_blathits.psl
