@@ -141,157 +141,138 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
 done
 conda deactivate
 
-# call variants with medaka on the wild type de novo assembly
-echo 'Checking if all samples are used for variant calling on the denovo assembled WT'
+# call variants with medaka on all selected reference sequences
 conda activate medaka
-wd="$basedir"/haplotypes_WT/medaka
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
+for  r in $(seq 1 1 "${#refs[@]}" )
+do   count=$(echo "$r -1" | bc)      # correct for 0based counting
+     refname="${ref_names[$count]}"  # define refname
+     echo "Checking if all samples are used for variant calling on reference $refname"
 
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -d "$wd/$name" ]
-      then   if   [ ! $(command -v medaka_haploid_variant) ]
-             then echo 'cant find medaka'
-             fi
-             medaka_haploid_variant -i "$fqdir/$s"    \
-                                    -r "$WT"          \
-                                    -o "$wd/$name"    \
-                                    -t $(nproc)       \
-                                    -m r941_min_sup_variant_g507
-      fi
+     wd="$basedir"/haplotypes_"$refname"/mapped_ngmlr
+     if     [ ! -d   "$wd" ]
+     then   mkdir -p "$wd"
+     fi
+
+     for   s in "${samples[@]}"
+     do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+           if     [ ! -d "$wd/$name" ]
+           then   if   [ ! $(command -v medaka_haploid_variant) ]
+                  then echo 'cant find medaka'
+                  fi
+                  medaka_haploid_variant -i "$fqdir/$s"    \
+                                         -r "${refs[$count]}" \
+                                         -o "$wd/$name"    \
+                                         -t $(nproc)       \
+                                         -m r941_min_sup_variant_g507
+           fi
+     done
 done
 conda deactivate
 
-# map reads with ngmlr on the WT assembled and polished genome for variant calling with sniffles
-echo 'Checking if all samples are mapped to the denovo WT with ngmlr'
+# map reads with ngmlr for variant calling with sniffles
 conda activate nanopore
-wd="$basedir"/haplotypes_WT/mapped_ngmlr
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
+for  r in $(seq 1 1 "${#refs[@]}" )
+do   count=$(echo "$r -1" | bc)      # correct for 0based counting
+     refname="${ref_names[$count]}"  # define refname
+     echo "Checking if all samples are mapped to $refname with ngmlr"
 
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -f "$wd/$name".sorted.bam ]
-      then   if   [ ! $(command -v ngmlr) ]
-             then echo 'cant find ngmlr'
-             fi
-             ngmlr -q "$fqdir/$s"     \
-                   -r "$WT"           \
-                   --rg-sm "$name"    \
-                   -t $(nproc)        \
-                   -x ont             \
-                   -o "$wd/$name".sam
-             # now process the bam file with samtools for later use and visualisation
-             samtools sort -@ 6 -m 9G "$wd/$name".sam \
-             | samtools view -b -@ 6 -h               \
-             > "$wd/$name".sorted.bam
-             samtools index "$wd/$name".sorted.bam
-             rm "$wd/$name".sam
+     wd="$basedir"/haplotypes_"$refname"/mapped_ngmlr
+     if     [ ! -d   "$wd" ]
+     then   mkdir -p "$wd"
+     fi
+
+     for   s in "${samples[@]}"
+     do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+           if     [ ! -f "$wd/$name".sorted.bam ]
+           then   if   [ ! $(command -v ngmlr) ]
+                  then echo 'cant find ngmlr'
+                  fi
+                  ngmlr -q "$fqdir/$s"     \
+                        -r "${refs[$count]}" \
+                        --rg-sm "$name"    \
+                        -t $(nproc)        \
+                        -x ont             \
+                        -o "$wd/$name".sam
+                  # now process the bam file with samtools for later use and visualisation
+                  samtools sort -@ 6 -m 9G "$wd/$name".sam \
+                  | samtools view -b -@ 6 -h               \
+                  > "$wd/$name".sorted.bam
+                  samtools index "$wd/$name".sorted.bam
+                  rm "$wd/$name".sam
       fi
+      done
 done
 
-# call variants with sniffles on the WT assembled and polished genome
-echo 'Checking if all samples are used for structural variant calling on the denovo WT'
-wd="$basedir"/haplotypes_WT/sniffles
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
+#call variants with sniffles on the reference of of choice
+conda acticate sniffles
+for  r in $(seq 1 1 "${#refs[@]}" )
+do   count=$(echo "$r -1" | bc)      # correct for 0based counting
+     refname="${ref_names[$count]}"  # define refname
+     echo "Checking if all samples are used for structural variant calling on reference $refname"
 
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -f "$wd/$name".vcf ]
-      then   if   [ ! $(command -v sniffles) ]
-             then echo 'cant find sniffles'
-             fi
-             sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
-                      --reference "$WT"                                 \
-                      --snf "$wd/$name".snf                             \
-                      --vcf "$wd/$name".vcf
-      fi
-done
-# now combine all sniffles calls in one vcf
-if   [ ! -f "$wd"/multi-sample.vcf ]
-then sniffles --input "$wd/"*.snf --vcf "$wd"/multi-sample.vcf
-fi
-conda deactivate
+     wd="$basedir"/haplotypes_"$refname"/sniffles
+     if     [ ! -d   "$wd" ]
+     then   mkdir -p "$wd"
+     fi
 
-# call variants with medaka on the ncbi reference
-echo 'Checking if all samples are used for variant calling on the reference'
-conda activate medaka
-wd="$basedir"/haplotypes_ref/medaka
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
-
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq.gz//g' )
-      if     [ ! -d "$wd/$name" ]
-      then   if   [ ! $(command -v medaka_haploid_variant) ]
-             then echo 'cant find medaka'
-             fi
-             medaka_haploid_variant -i "$fqdir/$s"    \
-                                    -r "$ncbi"        \
-                                    -o "$wd/$name"    \
-                                    -t $(nproc)       \
-                                    -m r941_min_sup_variant_g507
-      fi
+     for   s in "${samples[@]}"
+     do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+           if     [ ! -f "$wd/$name".vcf ]
+           then   if   [ ! $(command -v sniffles) ]
+                  then echo 'cant find sniffles'
+                  fi
+                  sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
+                           --reference "${refs[$count]}"                     \
+                           --snf "$wd/$name".snf                             \
+                           --vcf "$wd/$name".vcf
+           fi
+     done
+     # now combine all sniffles calls in one vcf
+     if   [ ! -f "$wd"/multi-sample.vcf ]
+     then sniffles --input "$wd/"*.snf --vcf "$wd"/multi-sample.vcf
+     fi
 done
 conda deactivate
 
+exit
 
-# map reads with ngmlr on the ncbi reference (for variant calling with sniffles)
-echo 'Checking if all samples are mapped to the reference with ngmlr'
-conda activate nanopore
-wd="$basedir"/haplotypes_ref/mapped_ngmlr
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
 
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -f "$wd/$name".sorted.bam ]
-      then   if   [ ! $(command -v ngmlr) ]
-             then echo 'cant find ngmlr'
-             fi
-             ngmlr -q "$fqdir/$s"    \
-                   -r "$ncbi"        \
-                   --rg-sm "$name"   \
-                   -t $(nproc)       \
-                   -x ont            \
-                   -o "$wd/$name".sam
-             samtools sort -@ 6 -m 9G "$wd/$name".sam \
-             | samtools view -b -@ 6 -h               \
-             > "$wd/$name".sorted.bam
-             samtools index "$wd/$name".sorted.bam
-             rm "$wd/$name".sam
-      fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+conda activate igv
+# searching for sequences of interest in all reference assemblies
+for  r in $(seq 1 1 "${#refs[@]}" )
+do   count=$(echo "$r -1" | bc)      # correct for 0based counting
+     refname="${ref_names[$count]}"  # define refname
+     echo "Using blat to annotate particular regions of interest on $refname"
+
+     wd="$basedir"/igv_configs/
+     if    [ ! -d   "$wd" ]
+     then  mkdir -p "$wd"
+     fi
+     if    [ ! -f "$wd"/"$refname"_blathits.psl
+     then  blat  "${refs[$count]}"              \
+                 queries.fasta                  \
+                 -t=DNA -q=DNA
+                 "$wd"/"$refname"_blathits.psl
+     fi
 done
-
-# call variants with sniffles on the ncbi reference
-echo 'Checking if all samples are used for structural variant calling on the reference'
-wd="$basedir"/haplotypes_ref/sniffles
-if     [ ! -d   "$wd" ]
-then   mkdir -p "$wd"
-fi
-
-for   s in "${samples[@]}"
-do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -f "$wd/$name".vcf ]
-      then   if   [ ! $(command -v sniffles) ]
-             then echo 'cant find sniffles'
-             fi
-             sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam     \
-                      --reference "$ncbi"                           \
-                      --snf "$wd/$name".snf                         \
-                      --vcf "$wd/$name".vcf
-      fi
-done
-# now combine all sniffles calls in one vcf
-if   [ ! -f "$wd"/multi-sample.vcf ]
-then sniffles --input "$wd/"*.snf --vcf "$wd"/multi-sample.vcf
-fi
 conda deactivate
+
 echo 'Script finished'
