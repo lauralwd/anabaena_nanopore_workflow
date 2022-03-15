@@ -95,7 +95,7 @@ echo 'Checking if all denovo assemblies have reads mapped back'
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      if     [ ! -d "$basedir"/denovo/"$name/polished-medaka/$name.bam" ]
+      if     [ ! -f "$basedir"/denovo/"$name/polished-medaka/$name.bam" ]
       then   if   [ ! $(command -v minimap2) ]
              then echo 'minimap2 is not found'
                   exit
