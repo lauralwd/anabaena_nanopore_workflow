@@ -245,20 +245,21 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
            if     [ ! -f "$wd/$name".sorted.bam ]
            then   if   [ ! $(command -v ngmlr) ]
                   then echo 'cant find ngmlr'
-                  fi
-                  ngmlr -q "$fqdir/$s"     \
-                        -r "${refs[$count]}" \
-                        --rg-sm "$name"    \
-                        -t $(nproc)        \
-                        -x ont             \
-                        -o "$wd/$name".sam
+                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+                  then ngmlr -q "$fqdir/$s"     \
+                             -r "${refs[$count]}" \
+                             --rg-sm "$name"    \
+                             -t $(nproc)        \
+                             -x ont             \
+                             -o "$wd/$name".sam
                   # now process the bam file with samtools for later use and visualisation
                   samtools sort -@ 6 -m 9G "$wd/$name".sam \
                   | samtools view -b -@ 6 -h               \
                   > "$wd/$name".sorted.bam
                   samtools index "$wd/$name".sorted.bam
                   rm "$wd/$name".sam
-      fi
+                 fi
+           fi
       done
 done
 
