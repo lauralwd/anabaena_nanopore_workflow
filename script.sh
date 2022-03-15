@@ -90,6 +90,62 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
 done
 conda deactivate
 
+# for each sample, map the sample reads to the polished assembly
+echo 'Checking if all denovo assemblies have reads mapped back'
+conda activate nanopore
+for   s in "${samples[@]}"
+do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+      if     [ ! -d "$basedir"/denovo/"$name/polished-medaka/$name.bam" ]
+      then   if   [ ! $(command -v minimap2) ]
+             then echo 'minimap2 is not found'
+                  exit
+             fi
+             if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
+             then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
+                           -d "$basedir"/denovo/"$name"/assembly.fasta.mmi
+             fi
+             minimap2 -d "$basedir"/denovo/"$name"/assembly.fasta \
+                      "$fqdir/$s"           \
+                      -x map-ont            \
+                      -t 6                  \
+                      -Y                    \
+                      -a                    \
+            | samtools sort -@ 6 -l 9 -m 9G \
+            | samtools view -b              \
+            > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
+      fi
+done
+conda deactivate
+exit
+
+# for each sample, map the WT reads to the polished assembly
+echo 'Checking if all denovo assemblies have reads mapped back'
+conda activate nanopore
+for   s in "${samples[@]}"
+do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+      refname=$(grep "$name" "$maptab" | grep -v ncbi | cut -f 1 )
+      if     [ ! -d "$basedir"/denovo/"$name/polished-medaka/$refname.bam" ]
+      then   if   [ ! $(command -v minimap2) ]
+             then echo 'minimap2 is not found'
+                  exit
+             fi
+             if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
+             then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
+                           -d "$basedir"/denovo/"$name"/assembly.fasta.mmi
+             fi
+             minimap2 -d "$basedir"/denovo/"$name"/assembly.fasta \
+                      "$fqdir/$refname".fastq.gz  \
+                      -x map-ont            \
+                      -t 6                  \
+                      -Y                    \
+                      -a                    \
+            | samtools sort -@ 6 -l 9 -m 9G \
+            | samtools view -b              \
+            > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
+      fi
+done
+conda deactivate
+
 # Annotate all assembled and polished genomes with prokka
 echo 'Checking if all polished assemblies are annotated with prokka'
 conda activate prokka
