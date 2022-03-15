@@ -237,27 +237,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
 done
 conda deactivate
 
-exit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 conda activate igv
 # searching for sequences of interest in all reference assemblies
 for  r in $(seq 1 1 "${#refs[@]}" )
