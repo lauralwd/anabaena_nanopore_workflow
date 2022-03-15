@@ -311,7 +311,7 @@ fi
 
 for  s in "${samples[@]}"
 do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-     if    [ ! -f "$wd"/"$name"_blathits.psl
+     if    [ ! -f "$wd"/"$name"_blathits.psl ]
      then  checkprog blat
            blat  "$basedir"/denovo/"$name"/medaka-polished/consensus.fasta \
                  queries.fasta                                             \
