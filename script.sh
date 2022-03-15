@@ -126,7 +126,7 @@ conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       refname=$(grep "$name" "$maptab" | grep -v ncbi | cut -f 1 )
-      if     [ ! -d "$basedir"/denovo/"$name/polished-medaka/$refname.bam" ]
+      if     [ ! -f "$basedir"/denovo/"$name/polished-medaka/$refname.bam" ]
       then   if   [ ! $(command -v minimap2) ]
              then echo 'minimap2 is not found'
                   exit
