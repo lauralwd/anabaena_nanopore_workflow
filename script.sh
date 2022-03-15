@@ -314,7 +314,7 @@ do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
      if    [ ! -f "$wd"/"$name"_blathits.psl ]
      then  checkprog blat
            blat  "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
-                 queries.fasta                                             \
+                 reference/queries.fasta                                   \
                  -t=DNA -q=DNA                                             \
                  "$wd"/"$name"_blathits.psl
      fi
