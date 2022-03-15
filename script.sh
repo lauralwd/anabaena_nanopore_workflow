@@ -301,20 +301,18 @@ done
 conda deactivate
 
 conda activate igv
-# searching for sequences of interest in all reference assemblies
-for  r in $(seq 1 1 "${#refs[@]}" )
-do   count=$(echo "$r -1" | bc)      # correct for 0based counting
-     refname="${ref_names[$count]}"  # define refname
-     echo "Using blat to annotate particular regions of interest on $refname"
+# searching for sequences of interest in all denovo assemblies
+wd="$basedir"/igv_configs/
+if    [ ! -d   "$wd" ]
+then  mkdir -p "$wd"
+fi
 
-     wd="$basedir"/igv_configs/
-     if    [ ! -d   "$wd" ]
-     then  mkdir -p "$wd"
-     fi
-     if    [ ! -f "$wd"/"$refname"_blathits.psl
-     then  blat  "${refs[$count]}"              \
-                 queries.fasta                  \
-                 -t=DNA -q=DNA
+for  s in "${samples[@]}"
+do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
+     if    [ ! -f "$wd"/"$name"_blathits.psl
+     then  blat  "$basedir"/denovo/"$name"/medaka-polished/consensus.fasta \
+                 queries.fasta                                             \
+                 -t=DNA -q=DNA                                             \
                  "$wd"/"$refname"_blathits.psl
      fi
 done
