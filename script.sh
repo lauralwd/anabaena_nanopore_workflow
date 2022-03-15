@@ -30,6 +30,7 @@ WT="$basedir"/denovo/WT/polished-medaka/consensus.fasta            # the name(s)
 CSV15="$basedir"/denovo/CSV15/polished-medaka/consensus.fasta
 refs=( "$WT" "$CSV15" "$ncbi" )
 ref_names=( 'WT' 'CSV15' 'ncbi' )
+maptab="$basedir"/WT_sample.txt
 
 # A trick to swtich conda environments while using this script, adapt to your particular conda installation.
 if   [ ! -f "$condadir"/etc/profile.d/conda.sh ]
