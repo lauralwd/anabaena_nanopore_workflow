@@ -13,11 +13,16 @@ The denovo approach includes:
 1. de-novo assembly with flye (dir `denovo`)
 2. assembly polishing with medaka (dir `denovo/sample/polished-medaka`)
 
-The reference based approach includes
-1. mapping to the ncbi reference with minimap2, then variant calling with medaka
-2. mapping to the ncbi reference with ngmlr, then calling structural variants with sniffles
+The reference based approach can take various reference-sample combinations and do:
+1. mapping to a reference with minimap2, then variant calling with medaka
+2. mapping to a reference with ngmlr, then calling structural variants with sniffles
 
-Finally, these last two variant calling steps are also performed against the wild type de-novo sequenced strain.
+A mapping table should match up sample names with their appropriate reference like so
+```
+#ref	samples
+WT1	sampleA sampleB sampleC
+WT2	sampleX sampleY sampleZ
+```
 
 ### code snippets
 To get a fasta file of a selection if IGV features, export features from a certain track in igv.
