@@ -303,6 +303,7 @@ conda deactivate
 
 conda activate igv
 # searching for sequences of interest in all denovo assemblies
+echo 'Using blat to find sequences of interest in the de-novo assemblies'
 wd="$basedir"/igv_configs/
 if    [ ! -d   "$wd" ]
 then  mkdir -p "$wd"
