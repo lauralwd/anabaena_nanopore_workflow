@@ -159,16 +159,18 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
            if     [ ! -d "$wd/$name" ]
            then   if   [ ! $(command -v medaka_haploid_variant) ]
                   then echo 'cant find medaka'
+                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+                  then medaka_haploid_variant -i "$fqdir/$s"    \
+                                              -r "${refs[$count]}"    \
+                                              -o "$wd/$name"    \
+                                              -t $(nproc)       \
+                                              -m r941_min_sup_variant_g507
                   fi
-                  medaka_haploid_variant -i "$fqdir/$s"    \
-                                         -r "${refs[$count]}" \
-                                         -o "$wd/$name"    \
-                                         -t $(nproc)       \
-                                         -m r941_min_sup_variant_g507
            fi
      done
 done
 conda deactivate
+exit
 
 # map reads with ngmlr for variant calling with sniffles
 conda activate nanopore
