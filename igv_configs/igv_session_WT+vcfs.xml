@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:0-477936" version="8">
+<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:2913884-3391243" version="8">
     <Resources>
         <Resource path="../denovo/WT/polished-medaka_prokka-annotation/WT.gff" type="gff"/>
+        <Resource path="../haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam" type="bam"/>
         <Resource path="../haplotypes_WT/medaka/WT/medaka.vcf" type="vcf"/>
-        <Resource path="../haplotypes_WT/medaka/UU2-3/medaka.vcf" type="vcf"/>
-        <Resource path="../haplotypes_WT/medaka/UU1-1/medaka.vcf" type="vcf"/>
         <Resource path="../denovo/WT/polished-medaka_bakta-annotation/WT.gff3" type="gff3"/>
-        <Resource path="../haplotypes_WT/medaka/CSV15/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU2-3/medaka.vcf" type="vcf"/>
         <Resource path="../haplotypes_WT/sniffles/multi-sample.vcf" type="vcf"/>
         <Resource path="../haplotypes_WT/medaka/UU2-8/medaka.vcf" type="vcf"/>
-        <Resource path="../haplotypes_WT/medaka/UU1-8/medaka.vcf" type="vcf"/>
-        <Resource path="../haplotypes_WT/medaka/UU1-4/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam" type="bam"/>
     </Resources>
-    <Panel height="498" name="DataPanel" width="1829">
+    <Panel height="715" name="DataPanel" width="1827">
         <Track attributeKey="multi-sample.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;3.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/sniffles/multi-sample.vcf" name="multi-sample.vcf" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/WT/medaka.vcf" name="WT" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-3/medaka.vcf" name="UU2-3" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-8/medaka.vcf" name="UU2-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-8/medaka.vcf" name="UU1-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-4/medaka.vcf" name="UU1-4" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU1-1/medaka.vcf" name="UU1-1" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/CSV15/medaka.vcf" name="CSV15" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
-    </Panel>
-    <Panel height="420" name="FeaturePanel" width="1829">
-        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="POSITIVE" shouldShowTranslation="false" visible="true"/>
         <Track attributeKey="WT.gff" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;44.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/WT/polished-medaka_prokka-annotation/WT.gff" name="prokka annotation" visible="true"/>
-        <Track attributeKey="WT.gff3" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;24.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/WT/polished-medaka_bakta-annotation/WT.gff3" name="bakta annotation" visible="true"/>
+        <Track attributeKey="WT.gff3" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;47.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/WT/polished-medaka_bakta-annotation/WT.gff3" name="bakta annotation" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/WT/medaka.vcf" name="WT" showGenotypes="true" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-3/medaka.vcf" name="UU2-3" showGenotypes="true" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-8/medaka.vcf" name="UU2-8" showGenotypes="true" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
     </Panel>
-    <PanelLayout dividerFractions="0.5405405405405406"/>
+    <Panel height="954" name="Panel1647345231834" width="1827">
+        <Track attributeKey="UU2-3.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam_coverage" name="UU2-3.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="62.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="UU2-3.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam_junctions" name="UU2-3.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="UU2-3.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam" name="UU2-3.sorted.bam" visible="true">
+            <RenderOptions hideSmallIndels="true"/>
+        </Track>
+    </Panel>
+    <Panel height="1598" name="Panel1647345231930" width="1827">
+        <Track attributeKey="UU2-8.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam_coverage" name="UU2-8.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="108.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="UU2-8.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam_junctions" name="UU2-8.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="UU2-8.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam" name="UU2-8.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="33" name="FeaturePanel" width="1827">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="NEGATIVE" shouldShowTranslation="true" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.5751351351351351,0.7437837837837837,0.9589189189189189"/>
+    <Regions>
+        <Region chromosome="contig_2" description="overlap" end="3153040" start="3152535"/>
+    </Regions>
     <HiddenAttributes>
         <Attribute name="DATA FILE"/>
         <Attribute name="DATA TYPE"/>
