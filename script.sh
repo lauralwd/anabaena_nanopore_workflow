@@ -118,10 +118,10 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                       -t 6                  \
                       -Y                    \
                       -a                    \
-            | samtools sort -@ 6 -l 9 -m 9G \
-            > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
-            # index the bamfile for igv
-            samtools index "$basedir"/denovo/"$name/polished-medaka/$name.bam"
+             | samtools sort -@ 6 -l 9 -m 9G \
+             > "$basedir"/denovo/"$name/polished-medaka/$name.bam"
+             # index the bamfile for igv
+             samtools index "$basedir"/denovo/"$name/polished-medaka/$name.bam"
       fi
 done
 conda deactivate
@@ -147,10 +147,10 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                       -t 6                  \
                       -Y                    \
                       -a                    \
-            | samtools sort -@ 6 -l 9 -m 9G \
-            > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
-            # index the bamfile for igv
-            samtools index "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
+             | samtools sort -@ 6 -l 9 -m 9G \
+             > "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
+             # index the bamfile for igv
+             samtools index "$basedir"/denovo/"$name/polished-medaka/$refname.bam"
       fi
 done
 conda deactivate
@@ -263,7 +263,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   > "$wd/$name".sorted.bam
                   samtools index "$wd/$name".sorted.bam
                   rm "$wd/$name".sam
-                 fi
+                  fi
            fi
       done
 done
