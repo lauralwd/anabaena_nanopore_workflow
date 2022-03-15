@@ -259,7 +259,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                              -o "$wd/$name".sam
                   # now process the bam file with samtools for later use and visualisation
                   samtools sort -@ 6 -m 9G "$wd/$name".sam \
-                  | samtools view -b -@ 6 -h               \
                   > "$wd/$name".sorted.bam
                   samtools index "$wd/$name".sorted.bam
                   rm "$wd/$name".sam
