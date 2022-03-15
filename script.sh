@@ -205,7 +205,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      refname="${ref_names[$count]}"  # define refname
      echo "Checking if all samples are used for variant calling on reference $refname"
 
-     wd="$basedir"/haplotypes_"$refname"/mapped_ngmlr
+     wd="$basedir"/haplotypes_"$refname"/medaka
      if     [ ! -d   "$wd" ]
      then   mkdir -p "$wd"
      fi
