@@ -67,11 +67,9 @@ then   mkdir  "$wd"
 fi
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      then   if   [ ! $(command -v flye) ]
-             then echo 'flye is not found'
-                  exit
-             fi
       if     [ ! -d "$wd/$name" ]
+      then   checkprog flye
+             checkprog Bandage
              # assemble with flye expecting a genome of 6.4Mb
              flye --nano-hq "$fqdir/$s"    \
                   --genome-size 6.4M       \
