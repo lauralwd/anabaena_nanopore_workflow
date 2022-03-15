@@ -130,7 +130,9 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                    --db "$baktaDB"   \
                    --genus 'nostoc'  \
                    --prefix "$name"  \
+                   --compliant       \
                    --complete        \
+                   --keep-contig-headers \
                    --threads $(nproc)\
                     "$basedir"/denovo/"$name/polished-medaka/consensus.fasta"
       fi
