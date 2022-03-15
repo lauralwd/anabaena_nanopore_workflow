@@ -280,16 +280,18 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
            if     [ ! -f "$wd/$name".vcf ]
            then   if   [ ! $(command -v sniffles) ]
                   then echo 'cant find sniffles'
+                  elif [ $(grep "$refname" "$maptab" | cut -f 2 | grep "$name" -c ) -eq 1 ]
+                  then sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
+                                --reference "${refs[$count]}"                     \
+                                --snf "$wd/$name".snf                             \
+                                --vcf "$wd/$name".vcf
                   fi
-                  sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
-                           --reference "${refs[$count]}"                     \
-                           --snf "$wd/$name".snf                             \
-                           --vcf "$wd/$name".vcf
+
            fi
      done
      # now combine all sniffles calls in one vcf
-     if   [ ! -f "$wd"/multi-sample.vcf ]
-     then sniffles --input "$wd/"*.snf --vcf "$wd"/multi-sample.vcf
+     if   [ ! -f "$wd"/"$refname"_multi-sample.vcf ]
+     then sniffles --input "$wd/"*.snf --vcf "$wd"/"$refname"_multi-sample.vcf
      fi
 done
 conda deactivate
