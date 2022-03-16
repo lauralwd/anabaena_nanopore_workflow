@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # This script takes nanopore FastQ data and does several types of variant calling.
 # Variant calling is done against a downloaded (ncbi) reference, and denovo assembled references.
@@ -36,7 +35,6 @@ refs=( "$WT" "$CSV15" "$ncbi" )
 ref_names=( 'WT' 'CSV15' 'ncbi' )
 maptab="$basedir"/WT_sample.txt
 CPU=6 #$(nproc)
-
 
 # functions to use in the script
 function checkprog {
@@ -110,12 +108,12 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       then   checkprog minimap2
              checkprog samtools
              # check if a minimap2 index is already present:
-             if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
+             if   [ ! -f      "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta.mmi ]
              then minimap2    "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
                            -d "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta.mmi
              fi
              # run minimap2, then sort the samfile and convert to bam
-             minimap2 -d "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
+             minimap2         "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
                       "$fqdir/$s"           \
                       -x map-ont            \
                       -t "$CPU"             \
