@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # This script takes nanopore FastQ data and does several types of variant calling.
 # Variant calling is done against a downloaded (ncbi) reference, and denovo assembled references.
@@ -198,7 +199,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                    --compliant       \
                    --complete        \
                    --keep-contig-headers \
-                   --threads $(nproc)\
+                   --threads "$CPU"  \
                     "$basedir"/denovo/"$name/polished-medaka/consensus.fasta"
       fi
 done
@@ -226,7 +227,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   then medaka_haploid_variant -i "$fqdir/$s"    \
                                               -r "${refs[$count]}"    \
                                               -o "$wd/$name"    \
-                                              -t $(nproc)       \
+                                              -t "$CPU"         \
                                               -m r941_min_sup_variant_g507
                   fi
            fi
@@ -257,7 +258,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   then ngmlr -q "$fqdir/$s"     \
                              -r "${refs[$count]}" \
                              --rg-sm "$name"    \
-                             -t $(nproc)        \
+                             -t "$CPU"          \
                              -x ont             \
                              -o "$wd/$name".sam
                   # now process the bam file with samtools for later use and visualisation
