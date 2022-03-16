@@ -34,6 +34,8 @@ CSV15="$basedir"/denovo/CSV15/polished-medaka/consensus.fasta
 refs=( "$WT" "$CSV15" "$ncbi" )
 ref_names=( 'WT' 'CSV15' 'ncbi' )
 maptab="$basedir"/WT_sample.txt
+CPU=6 #$(nproc)
+
 
 # functions to use in the script
 function checkprog {
@@ -73,7 +75,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              # assemble with flye expecting a genome of 6.4Mb
              flye --nano-hq "$fqdir/$s"    \
                   --genome-size 6.4M       \
-                  --threads $(nproc)       \
+                  --threads "$CPU"         \
                   --scaffold               \
                   --out-dir "$wd/$name"
              Bandage image "$wd/$name"/assembly_graph.gfa \
@@ -108,14 +110,14 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
              checkprog samtools
              # check if a minimap2 index is already present:
              if   [ ! -f "$basedir"/denovo/"$name"/assembly.fasta.mmi ]
-             then minimap2    "$basedir"/denovo/"$name"/assembly.fasta \
-                           -d "$basedir"/denovo/"$name"/assembly.fasta.mmi
+             then minimap2    "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
+                           -d "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta.mmi
              fi
              # run minimap2, then sort the samfile and convert to bam
-             minimap2 -d "$basedir"/denovo/"$name"/assembly.fasta \
+             minimap2 -d "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
                       "$fqdir/$s"           \
                       -x map-ont            \
-                      -t 6                  \
+                      -t "$CPU"             \
                       -Y                    \
                       -a                    \
              | samtools sort -@ 6 -l 9 -m 9G \
