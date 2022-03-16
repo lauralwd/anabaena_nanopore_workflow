@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="All" version="8">
-    <Panel height="67" name="FeaturePanel" width="1131">
+<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:0-6464837" nextAutoscaleGroup="3" version="8">
+    <Resources>
+        <Resource path="../haplotypes_WT/sniffles/WT_multi-sample.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU2-3/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_WT/medaka/UU2-8/medaka.vcf" type="vcf"/>
+    </Resources>
+    <Panel height="814" name="DataPanel" width="1827">
+        <Track attributeKey="WT_multi-sample.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;3.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/sniffles/WT_multi-sample.vcf" name="sniffles_multi-sample" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;518.0;255,255,255;0,0,178" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-8/medaka.vcf" name="UU2-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;562.0;255,255,255;0,0,178" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-3/medaka.vcf" name="UU2-3" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+    </Panel>
+    <Panel height="104" name="FeaturePanel" width="1827">
         <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="POSITIVE" shouldShowTranslation="true" visible="true"/>
     </Panel>
-    <PanelLayout dividerFractions="0.8695652173913043"/>
+    <PanelLayout dividerFractions="0.8821621621621621"/>
     <HiddenAttributes>
         <Attribute name="DATA FILE"/>
         <Attribute name="DATA TYPE"/>
