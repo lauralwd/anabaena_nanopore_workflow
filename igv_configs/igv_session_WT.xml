@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:2678807-3633525" nextAutoscaleGroup="7" version="8">
+<Session genome="../denovo/WT/polished-medaka/consensus.fasta" locus="contig_2:0-6464837" nextAutoscaleGroup="8" version="8">
     <Resources>
         <Resource path="../denovo/WT/polished-medaka_prokka-annotation/WT.gff" type="gff"/>
         <Resource path="../haplotypes_WT/sniffles/WT_multi-sample.vcf" type="vcf"/>
@@ -17,27 +17,27 @@
         <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;562.0;255,255,255;0,0,178" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_WT/medaka/UU2-3/medaka.vcf" name="UU2-3" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
         <Track attributeKey="WT_blathits.psl" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;0.0;255,255,255;0,0,178" featureVisibilityWindow="0" fontSize="10" groupByStrand="false" id="/stor/anabaena/igv_configs/WT_blathits.psl" name="WT_blathits.psl" visible="true"/>
     </Panel>
-    <Panel height="1304" name="Panel1647431387623" width="1827">
+    <Panel height="1234" name="Panel1647431387623" width="1827">
         <Track attributeKey="WT.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/WT.sorted.bam_coverage" name="WT.sorted.bam Coverage" snpThreshold="0.2" visible="true">
-            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="84.0" minimum="0.0" type="LINEAR"/>
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="82.0" minimum="0.0" type="LINEAR"/>
         </Track>
         <Track attributeKey="WT.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/WT.sorted.bam_junctions" name="WT.sorted.bam Junctions" visible="false"/>
         <Track attributeKey="WT.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/WT.sorted.bam" name="WT.sorted.bam" visible="true">
             <RenderOptions/>
         </Track>
     </Panel>
-    <Panel height="1598" name="Panel1647431387753" width="1827">
+    <Panel height="1402" name="Panel1647431387753" width="1827">
         <Track attributeKey="UU2-8.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam_coverage" name="UU2-8.sorted.bam Coverage" snpThreshold="0.2" visible="true">
-            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="108.0" minimum="0.0" type="LINEAR"/>
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="94.0" minimum="0.0" type="LINEAR"/>
         </Track>
         <Track attributeKey="UU2-8.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam_junctions" name="UU2-8.sorted.bam Junctions" visible="false"/>
         <Track attributeKey="UU2-8.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-8.sorted.bam" name="UU2-8.sorted.bam" visible="true">
             <RenderOptions/>
         </Track>
     </Panel>
-    <Panel height="800" name="Panel1647431387872" width="1827">
+    <Panel height="912" name="Panel1647431387872" width="1827">
         <Track attributeKey="UU2-3.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam_coverage" name="UU2-3.sorted.bam Coverage" snpThreshold="0.2" visible="true">
-            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="51.0" minimum="0.0" type="LINEAR"/>
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="59.0" minimum="0.0" type="LINEAR"/>
         </Track>
         <Track attributeKey="UU2-3.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam_junctions" name="UU2-3.sorted.bam Junctions" visible="false"/>
         <Track attributeKey="UU2-3.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_WT/mapped_ngmlr/UU2-3.sorted.bam" name="UU2-3.sorted.bam" visible="true">
@@ -70,6 +70,26 @@
         <Region chromosome="contig_2" description="insertion uu23 and uu28" end="2455418" start="2451689"/>
         <Region chromosome="contig_2" description="two active transposons and deletion " end="2500669" start="2486455"/>
         <Region chromosome="contig_2" description="SepJ insertion" end="3171750" start="3140581"/>
+        <Region chromosome="contig_2" description="active transposon 15" end="3518045" start="3513878"/>
+        <Region chromosome="contig_2" description="active transposon 16" end="3657091" start="3649875"/>
+        <Region chromosome="contig_2" description="active transposon 17" end="3685698" start="3681694"/>
+        <Region chromosome="contig_2" description="deletion uu23 uu28" end="3702118" start="3700253"/>
+        <Region chromosome="contig_2" description="active transposon 18" end="3804022" start="3800293"/>
+        <Region chromosome="contig_2" description="insertion uu28" end="3915257" start="3912381"/>
+        <Region chromosome="contig_2" description="misassemly" end="3919127" start="3917738"/>
+        <Region chromosome="contig_2" description="insertion uu28" end="4183502" start="4176043"/>
+        <Region chromosome="contig_2" description="active transposon 19" end="4264046" start="4256398"/>
+        <Region chromosome="contig_2" description="insertion &quot;heterozygous&quot;" end="4406138" start="4405907"/>
+        <Region chromosome="contig_2" description="active transposon 20" end="4997350" start="4994557"/>
+        <Region chromosome="contig_2" description="active transposon 21" end="5192349" start="5188620"/>
+        <Region chromosome="contig_2" description="two active transposons" end="5487518" start="5457683"/>
+        <Region chromosome="contig_2" description="active transposon 24" end="5513746" start="5510017"/>
+        <Region chromosome="contig_2" description="insertion uu23 uu28" end="5572922" start="5568881"/>
+        <Region chromosome="contig_2" description="active transposon 25" end="5663283" start="5659554"/>
+        <Region chromosome="contig_2" description="two active transposons and deletion" end="5944675" start="5919161"/>
+        <Region chromosome="contig_2" description="insertion uu28" end="6150092" start="6146220"/>
+        <Region chromosome="contig_2" description="active transposon 28" end="6216037" start="6211131"/>
+        <Region chromosome="contig_2" description="insertion uu23" end="6430826" start="6415151"/>
     </Regions>
     <HiddenAttributes>
         <Attribute name="DATA FILE"/>
