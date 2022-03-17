@@ -305,7 +305,11 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
           do    name=$(echo $line | cut -f 1,2,3 | sed 's/\W/_/g')
                 echo \>"$name"
                 echo $line | cut -f 5
-          done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf | grep PASS | grep '\.INS\.' )
+          done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
+                  | grep PASS \
+                  | grep '\.INS\.' \
+                  ) \
+          > "$wd"/"$refname"_multi-sample_insertions.vcf
      fi
 done
 conda deactivate
