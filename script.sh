@@ -304,9 +304,9 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
           mv temp.txt "$wd"/"$refname"_multi-sample.vcf
           # create a fasta file with the sequences of all insertions
           while read line
-          do    name=$(echo $line | cut -f 1,2,3 | sed 's/\W/_/g')
+          do    name=$(echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
                 echo \>"$name"
-                echo $line | cut -f 5
+                echo $line | cut -f 5 -d ' '
           done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
                   | grep PASS \
                   | grep '\.INS\.' \
