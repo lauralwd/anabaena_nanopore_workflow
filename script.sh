@@ -289,6 +289,8 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   if [ $(grep "$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
                   then sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
                                 --reference "${refs[$count]}"                     \
+                                --sample-id "$name"                               \
+                                --long-dup-coverage 3                             \
                                 --snf "$wd/$name".snf                             \
                                 --vcf "$wd/$name".vcf
                   fi
