@@ -298,6 +298,12 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      # now combine all sniffles calls in one vcf
      if   [ ! -f "$wd"/"$refname"_multi-sample.vcf ]
      then sniffles --input "$wd/"*.snf --vcf "$wd"/"$refname"_multi-sample.vcf
+          # create a fasta file with the sequences of all insertions
+          while read line
+          do    name=$(echo $line | cut -f 1,2,3 | sed 's/\W/_/g')
+                echo \>"$name"
+                echo $line | cut -f 5
+          done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf | grep PASS | grep '\.INS\.' )
      fi
 done
 conda deactivate
