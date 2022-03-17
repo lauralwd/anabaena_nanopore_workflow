@@ -311,7 +311,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   | grep PASS \
                   | grep '\.INS\.' \
                   ) \
-          > "$wd"/"$refname"_multi-sample_insertions.vcf
+          > "$wd"/"$refname"_multi-sample_insertions.fasta
      fi
 done
 conda deactivate
