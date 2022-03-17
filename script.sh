@@ -290,7 +290,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   then sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
                                 --reference "${refs[$count]}"                     \
                                 --sample-id "$name"                               \
-                                --long-dup-coverage 3                             \
                                 --snf "$wd/$name".snf                             \
                                 --vcf "$wd/$name".vcf
                   fi
@@ -300,6 +299,9 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      # now combine all sniffles calls in one vcf
      if   [ ! -f "$wd"/"$refname"_multi-sample.vcf ]
      then sniffles --input "$wd/"*.snf --vcf "$wd"/"$refname"_multi-sample.vcf
+          # arbitrary fix to remove whole chromosome duplications
+          grep -Pv '\tSniffles2\.DUP' "$wd"/"$refname"_multi-sample.vcf > ./temp.txt
+          mv temp.txt "$wd"/"$refname"_multi-sample.vcf
           # create a fasta file with the sequences of all insertions
           while read line
           do    name=$(echo $line | cut -f 1,2,3 | sed 's/\W/_/g')
