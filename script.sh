@@ -331,6 +331,10 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                           | cut -d ';' -f 1                             \
                           )
      fi
+     echo "In reference $refname the following variants were annotated by sniffles2"
+     echo 'Insertions:'     $(grep -v '#' "$wd"/"$refname"_multi-sample.vcf | grep PASS | grep '\.INS\.' | wc -l )
+     echo 'Deletions:'      $(grep -v '#' "$wd"/"$refname"_multi-sample.vcf | grep PASS | grep '\.DEL\.' | wc -l )
+     echo 'Recombinations:' $(grep -v '#' "$wd"/"$refname"_multi-sample.vcf | grep PASS | grep '\.BND\.' | wc -l )
 done
 conda deactivate
 
