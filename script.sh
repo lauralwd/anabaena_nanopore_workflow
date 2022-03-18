@@ -113,7 +113,7 @@ do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
                            -d "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta.mmi
              fi
              # run minimap2, then sort the samfile and convert to bam
-             minimap2         "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
+             minimap2 "$basedir"/denovo/"$name"/polished-medaka/consensus.fasta \
                       "$fqdir/$s"           \
                       -x map-ont            \
                       -t "$CPU"             \
