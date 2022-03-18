@@ -34,7 +34,14 @@ CSV15="$basedir"/denovo/CSV15/polished-medaka/consensus.fasta
 refs=( "$WT" "$CSV15" "$ncbi" )
 ref_names=( 'WT' 'CSV15' 'ncbi' )
 maptab="$basedir"/WT_sample.txt
-CPU=6 #$(nproc)
+CPU=$(nproc)
+
+# check mapping table presence
+if   [ ! -f "$maptab" ]
+then echo 'Wildtype to sample mapping table is not found, make sure to set this propperly.'
+     echo "expecting mapping table at path $maptab"
+     exit 1
+fi
 
 # functions to use in the script
 function checkprog {
