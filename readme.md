@@ -24,17 +24,4 @@ WT1	sampleA sampleB sampleC
 WT2	sampleX sampleY sampleZ
 ```
 
-### code snippets
-To get a fasta file of a selection if IGV features, export features from a certain track in igv.
-The export is in bed format, but with `bedtools` we can easily make a fasta file out of this.
-For example, exporting sniffels features called on the reference genome: 
-```
-bedtools getfasta -fi ./reference/GCF_000009705.1_ASM970v1_genomic.fna   \
-                  -bed ./haplotypes_ref/sniffles/sniffles_features.bed   \
-                  -fo ./haplotypes_ref/sniffles/sniffels_features.fa     \
-                  -name+
-```
-The fasta output can be blasted to nr, or alligned to some other piece of DNA that is of interest.
-
-
 
