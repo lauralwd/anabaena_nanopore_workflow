@@ -330,26 +330,6 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                           | sed 's/\t[PI].*;END=/\t/g'                  \
                           | cut -d ';' -f 1                             \
                           )
-
-#          # create a fasta file with the sequences of all translocations
-#          while read line
-#          do    name=$(echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
-#                seq=$( echo $line | cut -f 5 -d ' ')
-#
-#                # check if seq is a seq, then print
-#                if                                          
-#                then echo \>"$name"
-#                     echo "$seq"
-#                fi
-#          done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
-#                  | grep PASS \
-#                  | grep '\.BND\.' \
-#                  ) \
-#          > "$wd"/"$refname"_multi-sample_translocations.vcf
-#          bedtools vcf to bed                              
-#          bed to fasta 				          
-#      #   rm "$wd"/"$refname"_multi-sample_translocations.vcf \
-#      #      bed                                              
      fi
 done
 conda deactivate
