@@ -302,14 +302,15 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
           mv temp.txt "$wd"/"$refname"_multi-sample.vcf
           # create a fasta file with the sequences of all insertions
           while read line
-          do    name=$(echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
-                seq=$( echo $line | cut -f 5 -d ' ')
-
+          do    name=$(  echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
+                seq=$(   echo $line | cut -f 5 -d ' ')
+                nonseq=$(echo $seq  | tr -d A | tr -d C | tr -d T | tr -d G | sed 's/\w//g' | wc -c )
                 # check if seq is a seq, then print
-                if   
+                if   [ "$nonseq" -eq 1 ]
                 then echo \>"$name"
                      echo "$seq"
                 fi
+                unset name seq nonseq
           done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
                   | grep PASS \
                   | grep '\.INS\.' \
