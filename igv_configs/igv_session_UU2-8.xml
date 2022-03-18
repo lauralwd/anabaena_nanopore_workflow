@@ -1,41 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Session genome="../denovo/UU2-8/polished-medaka/consensus.fasta" locus="contig_2:1221869-1233801" version="8">
+<Session genome="../denovo/UU2-8/polished-medaka/consensus.fasta" locus="contig_3:5354883-5370094" nextAutoscaleGroup="2" version="8">
     <Resources>
         <Resource path="../denovo/UU2-8/polished-medaka/UU2-8.bam" type="bam"/>
-        <Resource path="../denovo/UU2-8/polished-medaka/CSV15.bam" type="bam"/>
+        <Resource path="../denovo/UU2-8/polished-medaka_prokka-annotation/UU2-8.gff" type="gff"/>
         <Resource path="../denovo/UU2-8/polished-medaka_bakta-annotation/UU2-8.gff3" type="gff3"/>
         <Resource path="UU2-8_blathits.psl" type="psl"/>
-        <Resource path="../denovo/UU2-8/polished-medaka_prokka-annotation/UU2-8.gff" type="gff"/>
     </Resources>
-    <Panel height="138" name="DataPanel" width="1827">
-        <Track attributeKey="UU2-8_blathits.psl" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;9.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/igv_configs/UU2-8_blathits.psl" name="UU2-8_blathits.psl" visible="true"/>
+    <Panel height="164" name="DataPanel" width="1827">
+        <Track attributeKey="UU2-8_blathits.psl" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;0.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/igv_configs/UU2-8_blathits.psl" name="UU2-8_blathits.psl" visible="true"/>
     </Panel>
-    <Panel height="1500" name="Panel1647592071803" width="1827">
-        <Track attributeKey="CSV15.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/denovo/UU2-8/polished-medaka/CSV15.bam_junctions" name="CSV15.bam Junctions" visible="false"/>
+    <Panel height="1024" name="Panel1647619166552" width="1827">
         <Track attributeKey="UU2-8.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/denovo/UU2-8/polished-medaka/UU2-8.bam_coverage" name="UU2-8.bam Coverage" snpThreshold="0.2" visible="true">
-            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="91.0" minimum="0.0" type="LINEAR"/>
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="67.0" minimum="0.0" type="LINEAR"/>
         </Track>
+        <Track attributeKey="UU2-8.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/denovo/UU2-8/polished-medaka/UU2-8.bam_junctions" name="UU2-8.bam Junctions" visible="false"/>
         <Track attributeKey="UU2-8.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/denovo/UU2-8/polished-medaka/UU2-8.bam" name="UU2-8.bam" visible="true">
             <RenderOptions/>
         </Track>
     </Panel>
-    <Panel height="1276" name="Panel1647592071921" width="1827">
-        <Track attributeKey="UU2-8.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/denovo/UU2-8/polished-medaka/UU2-8.bam_junctions" name="UU2-8.bam Junctions" visible="false"/>
-        <Track attributeKey="CSV15.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/denovo/UU2-8/polished-medaka/CSV15.bam_coverage" name="CSV15.bam Coverage" snpThreshold="0.2" visible="true">
-            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="82.0" minimum="0.0" type="LINEAR"/>
-        </Track>
-        <Track attributeKey="CSV15.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/denovo/UU2-8/polished-medaka/CSV15.bam" name="CSV15.bam" visible="true">
-            <RenderOptions/>
-        </Track>
-    </Panel>
-    <Panel height="262" name="FeaturePanel" width="1827">
+    <Panel height="290" name="FeaturePanel" width="1827">
         <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="POSITIVE" shouldShowTranslation="true" visible="true"/>
         <Track attributeKey="UU2-8.gff3" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;27.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/UU2-8/polished-medaka_bakta-annotation/UU2-8.gff3" name="bakta annotation" visible="true"/>
         <Track attributeKey="UU2-8.gff" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;26.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/UU2-8/polished-medaka_prokka-annotation/UU2-8.gff" name="prokka annotation" visible="true"/>
     </Panel>
-    <PanelLayout dividerFractions="0.15135135135135136,0.44972972972972974,0.7113513513513513"/>
+    <PanelLayout dividerFractions="0.17945945945945946,0.7297297297297297"/>
     <Regions>
-        <Region chromosome="contig_2" description="insertion" end="1233801" start="1221869"/>
+        <Region chromosome="contig_3" description="SepJ insertion" end="5370094" start="5354883"/>
     </Regions>
     <HiddenAttributes>
         <Attribute name="DATA FILE"/>
