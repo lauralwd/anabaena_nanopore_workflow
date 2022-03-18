@@ -45,6 +45,12 @@ then echo "Command $1 is not found"
 fi
 }
 
+function checkwd {
+if   [ ! -d "$wd" ]
+then mkdir  "$wd"
+fi
+}
+
 # A trick to swtich conda environments while using this script, adapt to your particular conda installation.
 if   [ ! -f "$condadir"/etc/profile.d/conda.sh ]
 then echo 'quiting for we need the conda environments in the `envs` directory to proceed'
