@@ -69,9 +69,7 @@ fi
 echo 'Checking if all denovo assemblies are present'
 conda activate flye
 wd="$basedir"/denovo
-if     [ ! -d "$wd" ]
-then   mkdir  "$wd"
-fi
+checkwd
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       if     [ ! -d "$wd/$name" ]
@@ -217,9 +215,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      echo "Checking if all samples are used for variant calling on reference $refname"
 
      wd="$basedir"/haplotypes_"$refname"/medaka
-     if     [ ! -d   "$wd" ]
-     then   mkdir -p "$wd"
-     fi
+     checkwd
 
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -247,9 +243,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      echo "Checking if all samples are mapped to $refname with ngmlr"
 
      wd="$basedir"/haplotypes_"$refname"/mapped_ngmlr
-     if     [ ! -d   "$wd" ]
-     then   mkdir -p "$wd"
-     fi
+     checkwd
 
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -282,9 +276,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      echo "Checking if all samples are used for structural variant calling on reference $refname"
 
      wd="$basedir"/haplotypes_"$refname"/sniffles
-     if     [ ! -d   "$wd" ]
-     then   mkdir -p "$wd"
-     fi
+     checkwd
 
      for   s in "${samples[@]}"
      do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -326,9 +318,7 @@ conda activate igv
 # searching for sequences of interest in all denovo assemblies
 echo 'Using blat to find sequences of interest in the de-novo assemblies'
 wd="$basedir"/igv_configs/
-if    [ ! -d   "$wd" ]
-then  mkdir -p "$wd"
-fi
+checkwd
 
 for  s in "${samples[@]}"
 do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
