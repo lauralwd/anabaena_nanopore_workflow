@@ -303,8 +303,13 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
           # create a fasta file with the sequences of all insertions
           while read line
           do    name=$(echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
-                echo \>"$name"
-                echo $line | cut -f 5 -d ' '
+                seq=$( echo $line | cut -f 5 -d ' ')
+
+                # check if seq is a seq, then print
+                if   
+                then echo \>"$name"
+                     echo "$seq"
+                fi
           done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
                   | grep PASS \
                   | grep '\.INS\.' \
