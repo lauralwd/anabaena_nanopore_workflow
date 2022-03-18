@@ -4,7 +4,6 @@ Specifically, we're looking for large in/del variants in sequenced strains creat
 The _anabaena_/_nostoc_ reference strain: _Nostoc spec_ pcc7120 
 Downloaded from: https://www.ncbi.nlm.nih.gov/assembly/GCF_000009705.1/
 
-
 The analyses documented here include two main approaches. 
 First a denovo approach, assembling the anabaena genomes one by one,
 and second a reference based approach.
