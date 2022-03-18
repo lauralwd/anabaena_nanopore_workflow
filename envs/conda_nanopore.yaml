@@ -6,6 +6,8 @@ dependencies:
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=4.5=1_gnu
   - bandage=0.8.1=hb59a952_0
+  - bedops=2.4.39=h7d875b9_1
+  - bedtools=2.30.0=h7d7f7ad_1
   - bzip2=1.0.8=h7b6447c_0
   - c-ares=1.18.1=h7f8727e_0
   - ca-certificates=2022.2.1=h06a4308_0
