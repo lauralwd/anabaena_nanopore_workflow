@@ -315,6 +315,24 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   | grep '\.INS\.' \
                   ) \
           > "$wd"/"$refname"_multi-sample_insertions.fasta
+
+#          # create a fasta file with the sequences of all deletions
+#          while read line
+#          do    name=$(echo $line | cut -d ' ' -f 1,2,3 | sed 's/\W/_/g')
+#                seq=$( echo $line | cut -f 5 -d ' ')
+#
+#                # check if seq is a seq, then print
+#                if                                          
+#                then echo \>"$name"
+#                     echo "$seq"
+#                fi
+#          done < <(grep -v '#' "$wd"/"$refname"_multi-sample.vcf \
+#                  | grep PASS \
+#                  | grep '\.DEL\.' \
+#                  ) \
+#          > "$wd"/"$refname"_multi-sample_deletions.vcf
+#          bedtools vcf to bed                              
+#          bed to fasta 				          
      fi
 done
 conda deactivate
