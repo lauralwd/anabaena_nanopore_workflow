@@ -82,5 +82,13 @@ flyeplot
 ```
 
 
+## And the raw numbers as a table
 
+```{r}
+library(kableExtra)
+kable(
+  dcast(data = flye[,.(value=round(value,2)),by=c('samplename','statistic')],
+        formula = samplename ~ statistic,
+        value.var = 'value'),format = 'html')
+```
 
