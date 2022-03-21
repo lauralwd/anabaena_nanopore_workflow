@@ -27,6 +27,7 @@ for   n in ${names[@]}
 do    tail -n 8 ./denovo/$n/flye.log  \
       | head -n 6                     \
       | tr ' ' _                      \
+      | tr -d ':'                     \
       | sed "s/^/$n/g"
 done                                  \
 | sed -E 's/ +/\t/g'                  \
