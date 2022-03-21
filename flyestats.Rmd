@@ -35,14 +35,14 @@ done                                  \
 >> denovo/flyestats.txt
 ```
 
-## import flye stats in R
+## Import flye stats in R
 ```{r}
 setwd("/stor/anabaena")
 library(data.table)
 flye <- fread(file = "./denovo/flyestats.txt",header = T,colClasses = c('factor','factor','double'))
 ```
 
-## convert lengths to mb
+## Convert lengths to mb
 with some data.table magic
 ```{r}
 bp_to_mb <- c('Fragments_N50','Largest_frg','Total_length')
@@ -62,7 +62,7 @@ levels(flye$statistic) <- c("Contigs\n(count)",
                             "Total_length\n(Mbase)") 
 ```
 
-## flye stats as (gg)plot
+## Flye stats as (gg)plot
 ```{r}
 library(ggplot2)
 flyeplot <- ggplot(data = flye[statistic != 'Scaffolds'],
@@ -83,7 +83,7 @@ flyeplot
 ```
 
 
-## And the raw numbers as a table
+## Flye stats as table
 
 ```{r}
 library(kableExtra)
