@@ -64,7 +64,7 @@ levels(flye$statistic) <- c("Fragments\n(count)",
 ## flye stats as (gg)plot
 ```{r}
 library(ggplot2)
-flyeplot <- ggplot(data = flye[statistic != 'Scaffolds:'],
+flyeplot <- ggplot(data = flye[statistic != 'Scaffolds'],
                    mapping = aes(
                      x=samplename,
                      y=value,
