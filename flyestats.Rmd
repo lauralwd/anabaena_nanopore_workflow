@@ -38,7 +38,27 @@ done                                  \
 ```{r}
 setwd("/stor/anabaena")
 library(data.table)
-flye <- fread(file = "./denovo/flyestats.txt",header = T)
+flye <- fread(file = "./denovo/flyestats.txt",header = T,colClasses = c('factor','factor','double'))
+```
+
+## convert lengths to mb
+with some data.table magic
+```{r}
+bp_to_mb <- c('Fragments_N50','Largest_frg','Total_length')
+flye[statistic %in% bp_to_mb,
+     value := value/1000000
+     ]
+rm(bp_to_mb)
+flye$value
+```
+## Make statistic a propper y axis label
+```{r}
+levels(flye$statistic) <- c("Fragments\n(count)",
+                            "Fragments_N50\n(Mbase)",
+                            "Largest_frg\n(Mbase)",
+                            "Mean_coverage",
+                            "Scaffolds",
+                            "Total_length\n(Mbase)") 
 ```
 
 ## flye stats as (gg)plot
