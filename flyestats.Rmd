@@ -88,7 +88,7 @@ flyeplot
 ```{r}
 library(kableExtra)
 kable(
-  dcast(data = flye[,.(value=round(value,2)),by=c('samplename','statistic')],
+  dcast(flye,
         formula = samplename ~ statistic,
         value.var = 'value'),format = 'html')
 ```
