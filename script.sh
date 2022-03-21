@@ -363,4 +363,10 @@ do   name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
 done
 conda deactivate
 
+# export R markdown page with some statistics on the flye assemblies
+if   [ ! -f ./denovo/flyestats.html ]
+then Rscript -e "rmarkdown::render('flyestats.Rmd',output_file='./denovo/flyestats.html')"
+fi
+
+
 echo 'Script finished'
