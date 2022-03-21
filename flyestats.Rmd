@@ -90,6 +90,10 @@ library(kableExtra)
 kable(
   dcast(flye,
         formula = samplename ~ statistic,
-        value.var = 'value'),format = 'html')
+        value.var = 'value'),
+  format = 'html',
+  align = 'c',
+  digits = 2) %>%
+  kable_minimal()
 ```
 
