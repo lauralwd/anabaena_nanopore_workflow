@@ -28,6 +28,7 @@ do    tail -n 8 ./denovo/$n/flye.log  \
       | head -n 6                     \
       | tr ' ' _                      \
       | tr -d ':'                     \
+      | sed "s/Fragment/Contig/g"     \
       | sed "s/^/$n/g"
 done                                  \
 | sed -E 's/ +/\t/g'                  \
@@ -53,9 +54,9 @@ flye$value
 ```
 ## Make statistic a propper y axis label
 ```{r}
-levels(flye$statistic) <- c("Fragments\n(count)",
-                            "Fragments_N50\n(Mbase)",
-                            "Largest_frg\n(Mbase)",
+levels(flye$statistic) <- c("Contigs\n(count)",
+                            "Contigs_N50\n(Mbase)",
+                            "Largest_contig\n(Mbase)",
                             "Mean_coverage",
                             "Scaffolds",
                             "Total_length\n(Mbase)") 
