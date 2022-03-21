@@ -77,6 +77,7 @@ flyeplot <- flyeplot + theme(strip.text.y = element_text(angle=0))
 flyeplot <- flyeplot + scale_fill_brewer(type = 'qual',
                                          palette = 2
                                          )
+flyeplot <- flyeplot + ylab(NULL)
 flyeplot
 ```
 
