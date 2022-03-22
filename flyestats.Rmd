@@ -97,3 +97,25 @@ kable(
   kable_minimal()
 ```
 
+## assembly graphs
+Here I link manually to snapshots of the assembly graphs:
+
+### CSV15
+![](denovo/CSV15.png)
+
+### UU1-1
+![](denovo/UU1-1.png)
+### UU1-4
+![](denovo/UU1-4.png)
+
+### UU1-8
+![](denovo/UU1-8.png)
+### UU2-8
+![](denovo/UU2-8.png)
+
+### UU2-3
+![](denovo/UU2-3.png)
+
+### WT
+![](denovo/WT.png)
+
