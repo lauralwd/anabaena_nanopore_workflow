@@ -12,7 +12,7 @@ The denovo approach includes:
 1. de-novo assembly with flye (dir `denovo`)
 2. assembly polishing with medaka (dir `denovo/sample/polished-medaka`)
 3. assembly annotation with both prokka and bakta
-4. mapping of sample and reference strain reads with minimap2f
+4. mapping of sample and reference strain reads with minimap2
 5. locating regions of interest with blat
 6. visualisation of all generated data with igv
 
