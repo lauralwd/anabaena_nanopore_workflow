@@ -30,4 +30,7 @@ WT1	sampleA sampleB sampleC
 WT2	sampleX sampleY sampleZ
 ```
 
+IGV snapshots are exported as png and svg images.
+High resolution png images are created by importing svg images in inkscape, then exporting as png again at dpi=1000.
+
 
