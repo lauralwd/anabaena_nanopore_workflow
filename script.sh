@@ -231,7 +231,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
            then   checkprog medaka_haploid_variant
                   # check if this reference-sample combo should be ran,
                   # otherwise continue to the next combo
-                  if [ $(grep "$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
+                  if [ $(grep \^"$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
                   then medaka_haploid_variant -i "$fqdir/$s"    \
                                               -r "${refs[$count]}"    \
                                               -o "$wd/$name"    \
@@ -260,7 +260,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
                   checkprog samtools
                   # check if this reference-sample combo should be ran,
                   # otherwise continue to the next combo
-                  if [ $(grep "$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
+                  if [ $(grep \^"$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
                   then ngmlr -q "$fqdir/$s"     \
                              -r "${refs[$count]}" \
                              --rg-sm "$name"    \
@@ -292,7 +292,7 @@ do   count=$(echo "$r -1" | bc)      # correct for 0based counting
            then   checkprog sniffles
                   # check if this reference-sample combo should be ran,
                   # otherwise continue to the next combo
-                  if [ $(grep "$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
+                  if [ $(grep \^"$refname" "$maptab" | grep "$name" -c ) -eq 1 ]
                   then sniffles --input "$wd"/../mapped_ngmlr/"$name".sorted.bam  \
                                 --reference "${refs[$count]}"                     \
                                 --sample-id "$name"                               \
