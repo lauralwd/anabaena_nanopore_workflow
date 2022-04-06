@@ -144,7 +144,7 @@ echo 'Checking if all denovo assemblies have WT reads mapped back'
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
-      refname=$(grep "$name" "$maptab" | grep -v ncbi | cut -f 1 )
+      refname=$(grep '\W'"$name" "$maptab" | grep -v ncbi | cut -f 1 )
       if     [ ! -f "$basedir"/denovo/"$name/polished-medaka/$refname.bam" ]
       then   checkprog minimap2
              checkprog samtools
