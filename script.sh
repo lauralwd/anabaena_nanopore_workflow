@@ -31,8 +31,9 @@ condadir=/home/laura/miniconda3                                    # (mini)conda
 ncbi="$basedir"/reference/GCF_000009705.1_ASM970v1_genomic.fna     # a reference genome to call variants on
 WT="$basedir"/denovo/WT/polished-medaka/consensus.fasta            # the name(s) of your wild type sample to use as a reference for variant calling
 CSV15="$basedir"/denovo/CSV15/polished-medaka/consensus.fasta
-refs=( "$WT" "$CSV15" "$ncbi" )
-ref_names=( 'WT' 'CSV15' 'ncbi' )
+CSAM="$basedir"/denovo/CSAM/polished-medaka/consensus.fasta
+refs=( "$WT" "$CSV15" "$ncbi" "$CSAM" )
+ref_names=( 'WT' 'CSV15' 'ncbi' 'CSAM')
 maptab="$basedir"/WT_sample.txt
 CPU=$(nproc)
 
