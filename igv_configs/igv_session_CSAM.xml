@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="../denovo/CSAM/polished-medaka/consensus.fasta" locus="contig_1:0-6516313" nextAutoscaleGroup="3" version="8">
+    <Resources>
+        <Resource path="../haplotypes_CSAM/medaka/UU2-7/medaka.vcf" type="vcf"/>
+        <Resource path="../denovo/CSAM/polished-medaka_prokka-annotation/CSAM.gff" type="gff"/>
+        <Resource path="../haplotypes_CSAM/medaka/UU2-8/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_CSAM/mapped_ngmlr/CSAM.sorted.bam" type="bam"/>
+        <Resource path="../haplotypes_CSAM/medaka/CSAM/medaka.vcf" type="vcf"/>
+        <Resource path="../denovo/CSAM/polished-medaka_bakta-annotation/CSAM.gff3" type="gff3"/>
+        <Resource path="../haplotypes_CSAM/mapped_ngmlr/UU2-3.sorted.bam" type="bam"/>
+        <Resource path="../haplotypes_CSAM/medaka/UU2-3/medaka.vcf" type="vcf"/>
+        <Resource path="../haplotypes_CSAM/sniffles/CSAM_multi-sample.vcf" type="vcf"/>
+        <Resource path="CSAM_blathits.psl" type="psl"/>
+        <Resource path="../haplotypes_CSAM/mapped_ngmlr/UU2-7.sorted.bam" type="bam"/>
+        <Resource path="../haplotypes_CSAM/mapped_ngmlr/UU2-8.sorted.bam" type="bam"/>
+    </Resources>
+    <Panel height="320" name="DataPanel" width="1827">
+        <Track attributeKey="CSAM_multi-sample.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;1.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_CSAM/sniffles/CSAM_multi-sample.vcf" name="CSAM_multi-sample.vcf" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="CSAM_blathits.psl" clazz="org.broad.igv.track.FeatureTrack" fontSize="10" groupByStrand="false" id="/stor/anabaena/igv_configs/CSAM_blathits.psl" name="CSAM_blathits.psl" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;1.0;255,255,255;0,0,178" displayMode="EXPANDED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_CSAM/medaka/CSAM/medaka.vcf" name="medaka CSAM" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;5.0;255,255,255;0,0,178" displayMode="SQUISHED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_CSAM/medaka/UU2-3/medaka.vcf" name="medaka UU2-3" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;6.0;255,255,255;0,0,178" displayMode="SQUISHED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_CSAM/medaka/UU2-7/medaka.vcf" name="medaka UU2-7" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+        <Track attributeKey="medaka.vcf" clazz="org.broad.igv.variant.VariantTrack" colorScale="ContinuousColorScale;0.0;5.0;255,255,255;0,0,178" displayMode="SQUISHED" fontSize="10" groupByStrand="false" id="/stor/anabaena/haplotypes_CSAM/medaka/UU2-8/medaka.vcf" name="medaka UU2-8" siteColorMode="ALLELE_FREQUENCY" squishedHeight="1" visible="true"/>
+    </Panel>
+    <Panel height="898" name="Panel1649316903497" width="1827">
+        <Track attributeKey="CSAM.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/CSAM.sorted.bam_coverage" name="CSAM.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="58.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="CSAM.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/CSAM.sorted.bam_junctions" name="CSAM.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="CSAM.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/CSAM.sorted.bam" name="CSAM.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="912" name="Panel1649316903656" width="1827">
+        <Track attributeKey="UU2-3.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-3.sorted.bam_coverage" name="UU2-3.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="59.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="UU2-3.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-3.sorted.bam_junctions" name="UU2-3.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="UU2-3.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-3.sorted.bam" name="UU2-3.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="182" name="Panel1649316903814" width="1827">
+        <Track attributeKey="UU2-7.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-7.sorted.bam_coverage" name="UU2-7.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="94.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="UU2-7.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-7.sorted.bam_junctions" name="UU2-7.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="UU2-7.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="SQUISHED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-7.sorted.bam" name="UU2-7.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="179" name="Panel1649316903919" width="1827">
+        <Track attributeKey="UU2-8.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-8.sorted.bam_coverage" name="UU2-8.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="93.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="UU2-8.sorted.bam Junctions" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-8.sorted.bam_junctions" name="UU2-8.sorted.bam Junctions" visible="false"/>
+        <Track attributeKey="UU2-8.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="SQUISHED" experimentType="THIRD_GEN" fontSize="10" id="/stor/anabaena/haplotypes_CSAM/mapped_ngmlr/UU2-8.sorted.bam" name="UU2-8.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="126" name="FeaturePanel" width="1827">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="POSITIVE" shouldShowTranslation="true" visible="true"/>
+        <Track attributeKey="CSAM.gff3" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;27.0;255,255,255;0,0,178" displayMode="SQUISHED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/CSAM/polished-medaka_bakta-annotation/CSAM.gff3" name="Bakta annotation" visible="true"/>
+        <Track attributeKey="CSAM.gff" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;26.0;255,255,255;0,0,178" displayMode="SQUISHED" fontSize="10" groupByStrand="false" id="/stor/anabaena/denovo/CSAM/polished-medaka_prokka-annotation/CSAM.gff" name="Prokka annotation" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.20864864864864865,0.3956756756756757,0.5589189189189189,0.7102702702702702,0.8583783783783784"/>
+    <Regions>
+        <Region chromosome="contig_1" description="CAST region" end="6206659" start="6188228"/>
+    </Regions>
+    <HiddenAttributes>
+        <Attribute name="DATA FILE"/>
+        <Attribute name="DATA TYPE"/>
+        <Attribute name="NAME"/>
+    </HiddenAttributes>
+</Session>
