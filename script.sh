@@ -80,7 +80,7 @@ then echo -e "$BLD""$RED""no samples found $NML"
 fi
 
 # for each sample, make a de novo assembly with flye
-echo 'Checking if all denovo assemblies are present'
+echo -e "$BLD""$GRN""Checking if all denovo assemblies are present $NML"
 conda activate flye
 wd="$basedir"/denovo
 checkwd
@@ -102,7 +102,7 @@ done
 conda deactivate
 
 # for each sample, polish the assembly with medaka
-echo 'Checking if all denovo assemblies are polished'
+echo -e "$BLD""$GRN""Checking if all denovo assemblies are polished $NML"
 conda activate medaka
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -118,7 +118,7 @@ done
 conda deactivate
 
 # for each sample, map the sample reads to the polished assembly
-echo 'Checking if all denovo assemblies have sample reads mapped back'
+echo -e "$BLD""$GRN""Checking if all denovo assemblies have sample reads mapped back $NML"
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -146,7 +146,7 @@ done
 conda deactivate
 
 # for each sample, map the WT reads to the polished assembly
-echo 'Checking if all denovo assemblies have WT reads mapped back'
+echo -e "$BLD""$GRN""Checking if all denovo assemblies have WT reads mapped back $NML"
 conda activate nanopore
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -175,7 +175,7 @@ done
 conda deactivate
 
 # Annotate all assembled and polished genomes with prokka
-echo 'Checking if all polished assemblies are annotated with prokka'
+echo -e "$BLD""$GRN""Checking if all polished assemblies are annotated with prokka $NML"
 conda activate prokka
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
@@ -202,7 +202,7 @@ then echo 'amrfinderplus-db is not setup correctly, doing that now'
      amrdinamrfinder_update --database "$baktaDB"/amrfinderplus-db
 fi
 
-echo 'Checking if all polished assemblies are annotated with bakta'
+echo -e "$BLD""$GRN""Checking if all polished assemblies are annotated with bakta $nml"
 for   s in "${samples[@]}"
 do    name=$(echo "$s" | sed 's/\.fastq\.gz//g' )
       wd="$basedir"/denovo/"$name"/polished-medaka_bakta-annotation
@@ -226,7 +226,7 @@ conda activate medaka
 for  r in $(seq 1 1 "${#refs[@]}" )
 do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      refname="${ref_names[$count]}"  # define refname
-     echo "Checking if all samples are used for variant calling on reference $refname"
+     echo -e "$BLD""$GRN""Checking if all samples are used for variant calling on reference $refname $NML"
 
      wd="$basedir"/haplotypes_"$refname"/medaka
      checkwd
@@ -254,7 +254,7 @@ conda activate nanopore
 for  r in $(seq 1 1 "${#refs[@]}" )
 do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      refname="${ref_names[$count]}"  # define refname
-     echo "Checking if all samples are mapped to $refname with ngmlr"
+     echo -e "$BLD""$GRN""Checking if all samples are mapped to $refname with ngmlr $NML"
 
      wd="$basedir"/haplotypes_"$refname"/mapped_ngmlr
      checkwd
@@ -287,7 +287,7 @@ done
 for  r in $(seq 1 1 "${#refs[@]}" )
 do   count=$(echo "$r -1" | bc)      # correct for 0based counting
      refname="${ref_names[$count]}"  # define refname
-     echo "Checking if all samples are used for structural variant calling on reference $refname"
+     echo -e "$BLD""$GRN""Checking if all samples are used for structural variant calling on reference $refname $NML"
 
      wd="$basedir"/haplotypes_"$refname"/sniffles
      checkwd
@@ -354,7 +354,7 @@ conda deactivate
 
 conda activate igv
 # searching for sequences of interest in all denovo assemblies
-echo 'Checking blat searches marking sequences of interest in the de-novo assemblies'
+echo -e "$BLD""$GRN""hecking blat searches marking sequences of interest in the de-novo assemblies $NML"
 wd="$basedir"/igv_configs/
 checkwd
 
@@ -373,7 +373,8 @@ conda deactivate
 # export R markdown page with some statistics on the flye assemblies
 if   [ ! -f ./denovo/flyestats.html ]
 then Rscript -e "rmarkdown::render('flyestats.Rmd',output_file='./denovo/flyestats.html')"
+else echo -e "$GRN""not updating denovo/flyestats html because it already exists. $NML"
 fi
 
 
-echo 'Script finished'
+echo -e "$BLD""$GRN"'Script finished'"$NML"
