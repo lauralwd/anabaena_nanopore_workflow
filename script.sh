@@ -37,10 +37,16 @@ ref_names=( 'WT' 'CSV15' 'ncbi' 'CSAM')
 maptab="$basedir"/WT_sample.txt
 CPU=$(nproc)
 
+# Coloured text
+BLD=$(tput bold)
+GRN=$(tput setaf 2)
+RED=$(tput setaf 1)
+NML=$(tput sgr0)
+
 # check mapping table presence
 if   [ ! -f "$maptab" ]
-then echo 'Wildtype to sample mapping table is not found, make sure to set this propperly.'
-     echo "expecting mapping table at path $maptab"
+then echo -e "$BLD""$RED""Wildtype to sample mapping table is not found, make sure to set this propperly. $NML"
+     echo -e "expecting mapping table at path $maptab"
      exit 1
 fi
 
