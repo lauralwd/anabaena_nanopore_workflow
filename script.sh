@@ -197,7 +197,7 @@ conda deactivate
 # Annotate all assembled and polished genomes with bakta
 conda activate bakta
 if   [ ! -d "$baktaDB"/amrfinderplus-db ]
-then echo 'amrfinderplus-db is not setup correctly, doing that now'
+then echo -e "$BLD""$RED""amrfinderplus-db is not setup correctly, doing that now $NML"
      checkprog amrdinamrfinder_update
      amrdinamrfinder_update --database "$baktaDB"/amrfinderplus-db
 fi
