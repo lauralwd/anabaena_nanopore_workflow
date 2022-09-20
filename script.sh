@@ -199,8 +199,8 @@ conda deactivate
 conda activate bakta
 if   [ ! -d "$baktaDB"/amrfinderplus-db ]
 then echo -e "$BLD""$RED""amrfinderplus-db is not setup correctly, doing that now $NML"
-     checkprog amrdinamrfinder_update
-     amrdinamrfinder_update --database "$baktaDB"/amrfinderplus-db
+     checkprog amrfinder_update
+     amrfinder_update --database "$baktaDB"/amrfinderplus-db
 fi
 
 echo -e "$BLD""$GRN""Checking if all polished assemblies are annotated with bakta $nml"
